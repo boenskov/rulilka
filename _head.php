@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <style>
         body {font-family: monospace;font-size: 12px;}
-        nav { border-bottom:1px solid silver;padding: 5px;font-size: 12px;}
+        nav { border-bottom:1px solid silver;padding: 5px;font-size: 12px;height: 20px;}
         nav:first-child { border-bottom:2px dashed black;padding: 10px;font-size: 16px;}
         nav a,nav a:link,nav a:visited {padding: 3px 10px;text-decoration: none;color: blue;}
         nav a:hover {text-shadow: 0 0 3px green;}
@@ -36,7 +36,7 @@
 
 <?php
 # определение основных функций
-
+chdir(dirname(__DIR__));
 
 /** Создание блока из fieldset
  * @param string|bool $name Заголовок блока или оставить пустым если надо закрыть блок
@@ -48,7 +48,7 @@ function _block($name=false,$class=false){
 
 function _cmd($cmd){
     echo "<code>&gt; $cmd</code>";
-    $cmd="umask 002 && {$cmd}";
+    $cmd="umask 000 && {$cmd}";
     system($cmd." 2>&1",$result);
 
     if($result) echo "\n<b>ОШИБКА</b>";
