@@ -1,5 +1,11 @@
 <?php
 
+function findDBConfig(){
+    $c=findD7Config();
+    if(!empty($c)) return $c;
+    return false;
+}
+
 function findD7Config(){
     $file=__DIR__."/../sites/default/settings.php";
     if(file_exists($file)){
@@ -17,9 +23,10 @@ function findD7Config(){
     return false;
 }
 
-function testDB($dns,$u,$p){
+function testDB($dns,$u,$p)
+{
     try {
-        $db=new PDO($dns,$u,$p);
+        $db = new PDO($dns, $u, $p);
         return $db;
     } catch (PDOException $e) {
         echo 'Подключение не удалось: ' . $e->getMessage();
@@ -27,3 +34,14 @@ function testDB($dns,$u,$p){
     }
 }
 
+function loadConfig($require=false)
+{
+    $config_file = __DIR__ . "/config.sys.php";
+    if (!file_exists($config_file)) {
+        if($require)
+            die("Файл с конфигом эталона не найден! Необходимо отредактировать файл config.sys.php.sample и сохранить как config.sys.php\n");
+        return false;
+    } else {
+        return require $config_file;
+    }
+}

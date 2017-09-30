@@ -9,7 +9,7 @@ require_once "_utils.php";
 echo "<h1>Состояние конфигурации</h1>";
 
 # текущий конфиг
-$conf=findD7Config();
+$conf=findDBConfig();
 echo "<pre><h2>Локальное подключение:</h2>";
 var_export($conf);
 echo "\n";
