@@ -59,8 +59,9 @@ if(empty($_GET["file"])){
     if (empty($file)) die ("Некорректный файл");
     if (!file_exists($file)) die ("Файл $file не существует");
 
-
-    echo "<h1>Импорт из бекапа $file</h1>";
+    importDBFromFile($file,$local);
+/*
+ *     echo "<h1>Импорт из бекапа $file</h1>";
 
     $size = filesize($file);
     echo "Размер файла: $size<br>";
@@ -71,9 +72,9 @@ if(empty($_GET["file"])){
 
     $cur_query = [];
 
-    /** @var  $cnt int количество обработанных строк */
+    /* * @var  $cnt int количество обработанных строк * /
     $cnt = 0;
-    /** @var  $q_cnt int количество выполненных запросов */
+    /** @var  $q_cnt int количество выполненных запросов * /
     $q_cnt = 0;
     while (($l = fgets($h, 100000000)) !== false) {
 #    echo "line: $l <br>";
@@ -112,10 +113,9 @@ if(empty($_GET["file"])){
         }
 
         $cnt++;
-#    if(++$cnt>1000) {
-#        die("stop");
-#    }
     }
+
+    */
     echo "Итоговое время выполнения " . (time() - $script_start) . "<br>";
     echo "<script>alert('Готово!');</script>";
 }
