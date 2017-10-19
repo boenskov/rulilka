@@ -10,6 +10,8 @@ $currentBranch=false;
 
 echo "<nav>
 <a href='?pull'>[ Сделать pull ]</a> 
+<a href='?ccall'>[ drush cc all ]</a> 
+<a href='?updatedb'>[ drush updatedb ]</a> 
 </nav>";
 
 
@@ -24,6 +26,7 @@ if(!empty($_GET["checkout"])){
     _block();
     exit();
 }
+
 if(!empty($_GET["del_branch"])){
     $b=$_GET["del_branch"];
     if(strpos($b,"/")){
@@ -39,6 +42,18 @@ if(!empty($_GET["del_branch"])){
 if(isset($_GET["pull"])){
     _block("Pull...","active");
     _cmd("git pull");
+    _block();
+}
+
+if(isset($_GET["ccall"])){
+    _block("Сброс кеша D7...","active");
+    _cmd("drush cc all");
+    _block();
+}
+
+if(isset($_GET["updatedb"])){
+    _block("Накатываем обновы базы...","active");
+    _cmd("drush updatedb -y");
     _block();
 }
 

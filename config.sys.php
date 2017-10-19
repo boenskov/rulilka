@@ -9,9 +9,9 @@ return [
     "etalon"=>[
         # параметры подключения к базе
         "db"=>[
-            'dns' => 'mysql:host=sql;dbname=tendertech;port=3306;charset=UTF8',
-            'u' => 'tendertech',
-            'p' => 'tendertech',
+            'dns' => 'mysql:host=192.168.1.14;dbname=devka-etalon;port=3306;charset=UTF8',
+            'u' => 'devka-etalon',
+            'p' => '4UcihxDSn5WgJurs',
         ],
         # таблицы из которых не надо копировать данные (обычно это кеши)
         "cache_tables"=>["batch","cache.*","sessions"],
