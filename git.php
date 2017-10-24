@@ -12,6 +12,7 @@ echo "<nav>
 <a href='?pull'>[ Сделать pull ]</a> 
 <a href='?ccall'>[ drush cc all ]</a> 
 <a href='?updatedb'>[ drush updatedb ]</a> 
+<a href='?cff'>[ drush demka_createfakefiles ]</a> 
 </nav>";
 
 
@@ -54,6 +55,12 @@ if(isset($_GET["ccall"])){
 if(isset($_GET["updatedb"])){
     _block("Накатываем обновы базы...","active");
     _cmd("drush updatedb -y");
+    _block();
+}
+
+if(isset($_GET["cff"])){
+    _block("Воссоздаем отсутствующее файло...","active");
+    _cmd("drush demka_createfakefiles");
     _block();
 }
 

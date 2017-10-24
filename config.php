@@ -48,7 +48,7 @@ else
     echo "<p>Обновление из эталона недоступно</p>";
 
 if(!empty($local))
-    echo "<p><a href='update_db_sql.php'>[ Обновление БД из бэкапа ]</a></p>";
+    echo "<p><a href='update_db_sql.php'>[ Обновление БД из бэкапа ]</a></p><p><a href='backup_db.php'>[ Создать бэкап ]</a></p>";
 else
     echo "<p>Обновление из бэкапа недоступно</p>";
 
