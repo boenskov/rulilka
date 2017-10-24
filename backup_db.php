@@ -34,7 +34,10 @@ if($l_conf!==false && !empty($l_conf["backup_dirs"]))
     $dirs=$l_conf["backup_dirs"];
 $dirs[]=__DIR__."/..";
 
-$dir=reset($dirs);
+$dir=false;
+foreach($dirs as $dir)
+    if(is_dir($dir)) break;
+
 echo "<p>Каталог бэкапа: <b>$dir</b></p>";
 
 if(!isset($_GET["go"])){
