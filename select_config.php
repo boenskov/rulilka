@@ -52,6 +52,9 @@ if($need_save){
     exit();
 }
 
+# файл основного конфига
+$main_config=file_get_contents($config_basedir."/settings.php");
+
 
 $title="GIT - управление репозиторием";
 require_once "_head.php";
@@ -59,13 +62,18 @@ require_once "_utils.php";
 
 echo "<h1>Доступные конфигурации</h1>";
 
-
-if(empty($files)){
+if(!file_exists($config_basedir."/rulilka_config_manager.php")){
+    echo "Внимание! Ветка не содержит обновлений для поддержки менеджера конфигов 
+    (нужен файл ".$config_basedir."/rulilka_config_manager.php".")";
+}elseif(!strpos($main_config,"rulilka_config_manager.php")){
+    # проверка дефолтного конфига
+    echo "файл ".$config_basedir."/settings.php"." не содержит строки подключения rulilka_config_manager.php";
+}
+elseif(empty($files)){
 
     ?>Альтернативные конифгурации не найдены. Необходимо добавить файлы 'config_*.php' содержащие настройки конфигураций.<?
 
 } else {
-
 
     /** @var  string $current текущий конфиг */
     $current = $rulilka_conf["active"] ?? "default";
