@@ -24,7 +24,8 @@
     <?php
     $nav=[
         "git.php"=>"GIT",
-        "config.php"=>"Конфиг",
+        "update_bd.php"=>"Обновление БД",
+        "select_config.php"=>"Конфиги",
         "readme.php"=>"readme",
     ];
     foreach($nav as $k=>$v){
